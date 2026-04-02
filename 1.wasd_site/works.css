@@ -1,0 +1,88 @@
+/* works.css */
+
+#page {
+  overflow-y: auto;
+  padding: 24px 28px 40px;
+}
+
+.works-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.wh-label { font-size: 10px; color: var(--white); letter-spacing: .15em; }
+.wh-count  { font-size: 9px;  color: var(--grey);  letter-spacing: .08em; }
+
+/* GRID */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.work-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: none;
+}
+
+/* Featured = spans full width */
+.work-item.featured { grid-column: span 12; }
+
+/* Others span 6 cols (2 per row) */
+.work-item:not(.featured) { grid-column: span 6; }
+
+/* MEDIA */
+.work-media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+}
+.work-media.placeholder { background: #111; }
+
+.work-video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .6s ease;
+}
+.work-item:hover .work-video { transform: scale(1.03); }
+
+.work-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0);
+  display: flex; align-items: center; justify-content: center;
+  transition: background .3s;
+  z-index: 2;
+}
+.work-item:hover .work-overlay { background: rgba(0,0,0,0.35); }
+
+.work-cta {
+  font-size: 11px; color: var(--white);
+  letter-spacing: .15em;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .3s, transform .3s;
+}
+.work-item:hover .work-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* META */
+.work-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0 4px;
+  border-bottom: 1px solid var(--border);
+}
+.work-num  { font-size: 9px; color: var(--grey); min-width: 24px; }
+.work-info { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.work-name { font-size: 10px; color: var(--white); letter-spacing: .08em; }
+.work-tags { font-size: 9px;  color: var(--grey);  letter-spacing: .06em; }
+.work-year { font-size: 9px;  color: var(--grey); }
